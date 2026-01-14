@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Onur Oto Galeri - Deneme</title>
+  <style>
+    /* Bu bölüm sayfanın genel arka plan rengini belirler */
+    body {
+      background-color: #f0f0f0; /* Açık gri arka plan */
+      font-family: Arial, sans-serif; /* Yazı tipi Arial */
+      margin: 0; /* Sayfa kenarlarındaki boşlukları kaldırır */
+      padding: 20px; /* İçerikten kenarlara 20px boşluk */
+    }
+
+    /* Üst menü çubuğu için stil */
+    nav {
+      background-color: #f4c542; /* Sarı arka plan */
+      padding: 15px; /* İçerikten kenarlara 15px boşluk */
+      text-align: center; /* Metni ortalar */
+      border-bottom: 3px solid #d4a017; /* Alt kenarda 3px kalın sarı çizgi */
+    }
+
+    /* Menü linklerinin stilini belirler */
+    nav a {
+      color: #222; /* Koyu gri yazı rengi */
+      text-decoration: none; /* Link altındaki çizgiyi kaldırır */
+      margin: 0 15px; /* Her linkin sağında ve solunda 15px boşluk */
+      font-weight: bold; /* Yazıyı kalın yapar */
+      font-size: 16px; /* Yazı boyutu 16px */
+    }
+
+    /* Linkin üzerine gelindiğinde olacak değişiklik */
+    nav a:hover {
+      color: white; /* Yazı rengi beyaz olur */
+    }
+
+    /* Başlık için stil */
+    h1 {
+      color: #333; /* Koyu gri renk */
+      text-align: center; /* Metni ortalar */
+      margin-top: 30px; /* Üstten 30px boşluk */
+      font-size: 32px; /* Yazı boyutu 32px */
+    }
+
+    /* Alt başlık için stil */
+    h2 {
+      color: #555; /* Orta gri renk */
+      margin-top: 40px; /* Üstten 40px boşluk */
+      font-size: 24px; /* Yazı boyutu 24px */
+    }
+
+    /* Paragraf metinleri için stil */
+    p {
+      color: #666; /* Açık gri renk */
+      line-height: 1.6; /* Satırlar arası boşluk */
+      font-size: 16px; /* Yazı boyutu 16px */
+    }
+
+    /* Araç kartları için ana container */
+    .arac-listesi {
+      display: flex; /* Elemanları yan yana diz */
+      flex-wrap: wrap; /* Yer yoksa alt satıra geç */
+      gap: 20px; /* Kartlar arası 20px boşluk */
+      justify-content: center; /* Kartları ortala */
+      margin-top: 30px; /* Üstten 30px boşluk */
+    }
+
+    /* Her bir araç kartı için stil */
+    .arac-karti {
+      background-color: white; /* Beyaz arka plan */
+      border: 2px solid #ddd; /* 2px kalın açık gri kenarlık */
+      border-radius: 10px; /* Köşeleri 10px yuvarlat */
+      padding: 15px; /* İçerikten kenarlara 15px boşluk */
+      width: 280px; /* Kart genişliği 280px */
+      text-align: center; /* İçeriği ortala */
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Hafif gölge efekti */
+    }
+
+    /* Kartın üzerine gelindiğinde */
+    .arac-karti:hover {
+      border-color: #f4c542; /* Kenarlık rengi sarı olur */
+      transform: scale(1.05); /* Kartı %5 büyüt */
+    }
+
+    /* Araç resimleri için stil */
+    .arac-karti img {
+      width: 100%; /* Resim genişliği kartın genişliği kadar */
+      height: 180px; /* Resim yüksekliği 180px */
+      object-fit: cover; /* Resmi kırpmadan sığdır */
+      border-radius: 5px; /* Köşeleri 5px yuvarlat */
+      margin-bottom: 10px; /* Alttan 10px boşluk */
+    }
+
+    /* Fiyat yazısı için stil */
+    .fiyat {
+      color: #f4c542; /* Sarı renk */
+      font-size: 20px; /* Yazı boyutu 20px */
+      font-weight: bold; /* Kalın yazı */
+      margin-top: 10px; /* Üstten 10px boşluk */
+    }
+
+    /* İstatistik kutuları için container */
+    .istatistikler {
+      display: flex; /* Elemanları yan yana diz */
+      justify-content: space-around; /* Aralarında eşit boşluk bırak */
+      margin-top: 30px; /* Üstten 30px boşluk */
+      flex-wrap: wrap; /* Yer yoksa alt satıra geç */
+    }
+
+    /* Her bir istatistik kutusu */
+    .istatistik {
+      background-color: #e8e8e8; /* Açık gri arka plan */
+      padding: 20px; /* İçerikten kenarlara 20px boşluk */
+      border-radius: 8px; /* Köşeleri 8px yuvarlat */
+      text-align: center; /* Metni ortala */
+      min-width: 150px; /* Minimum genişlik 150px */
+      margin: 10px; /* Her yönden 10px boşluk */
+    }
+
+    /* İstatistik sayıları için stil */
+    .istatistik strong {
+      display: block; /* Blok element yap (alt satıra geç) */
+      font-size: 28px; /* Yazı boyutu 28px */
+      color: #f4c542; /* Sarı renk */
+      margin-bottom: 5px; /* Alttan 5px boşluk */
+    }
+
+    /* Form container için stil */
+    .iletisim-formu {
+      background-color: white; /* Beyaz arka plan */
+      padding: 25px; /* İçerikten kenarlara 25px boşluk */
+      border-radius: 10px; /* Köşeleri 10px yuvarlat */
+      max-width: 500px; /* Maksimum genişlik 500px */
+      margin: 30px auto; /* Üstten 30px, yanlardan otomatik (ortala) */
+      border: 2px solid #ddd; /* 2px kalın açık gri kenarlık */
+    }
+
+    /* Form etiketleri için stil */
+    label {
+      display: block; /* Blok element yap */
+      margin-top: 15px; /* Üstten 15px boşluk */
+      margin-bottom: 5px; /* Alttan 5px boşluk */
+      color: #333; /* Koyu gri renk */
+      font-weight: bold; /* Kalın yazı */
+    }
+
+    /* Input alanları için stil */
+    input, textarea, select {
+      width: 100%; /* Genişlik %100 */
+      padding: 10px; /* İçerikten kenarlara 10px boşluk */
+      border: 1px solid #ccc; /* 1px kalın açık gri kenarlık */
+      border-radius: 5px; /* Köşeleri 5px yuvarlat */
+      font-size: 14px; /* Yazı boyutu 14px */
+      box-sizing: border-box; /* Padding'i genişliğe dahil et */
+    }
+
+    /* Textarea için ek stil */
+    textarea {
+      resize: vertical; /* Sadece dikey boyutlandırmaya izin ver */
+      min-height: 80px; /* Minimum yükseklik 80px */
+    }
+
+    /* Buton için stil */
+    button {
+      background-color: #f4c542; /* Sarı arka plan */
+      color: #222; /* Koyu gri yazı rengi */
+      padding: 12px 30px; /* Üst-alt 12px, sağ-sol 30px boşluk */
+      border: none; /* Kenarlık yok */
+      border-radius: 5px; /* Köşeleri 5px yuvarlat */
+      font-size: 16px; /* Yazı boyutu 16px */
+      font-weight: bold; /* Kalın yazı */
+      cursor: pointer; /* Fare imlecini el işareti yap */
+      margin-top: 15px; /* Üstten 15px boşluk */
+      width: 100%; /* Genişlik %100 */
+    }
+
+    /* Butonun üzerine gelindiğinde */
+    button:hover {
+      background-color: #d4a017; /* Daha koyu sarı */
+    }
+
+    /* Butona tıklandığında */
+    button:active {
+      transform: scale(0.98); /* Butonu biraz küçült */
+    }
+
+    /* Yakıt seçenekleri için container */
+    .yakit-secenekleri {
+      display: flex; /* Elemanları yan yana diz */
+      gap: 10px; /* Aralarında 10px boşluk */
+      flex-wrap: wrap; /* Yer yoksa alt satıra geç */
+      margin-top: 10px; /* Üstten 10px boşluk */
+    }
+
+    /* Her bir yakıt seçeneği */
+    .yakit-pill {
+      background-color: #f0f0f0; /* Açık gri arka plan */
+      padding: 8px 15px; /* Üst-alt 8px, sağ-sol 15px boşluk */
+      border: 1px solid #ccc; /* 1px kalın açık gri kenarlık */
+      border-radius: 20px; /* Köşeleri 20px yuvarlat (yuvarlak) */
+      cursor: pointer; /* Fare imlecini el işareti yap */
+      font-size: 14px; /* Yazı boyutu 14px */
+    }
+
+    /* Yakıt seçeneğinin üzerine gelindiğinde */
+    .yakit-pill:hover {
+      background-color: #f4c542; /* Sarı arka plan */
+      color: white; /* Beyaz yazı rengi */
+    }
+
+    /* İletişim bilgileri kutusu */
+    .iletisim-bilgisi {
+      background-color: #333; /* Koyu gri arka plan */
+      color: white; /* Beyaz yazı rengi */
+      padding: 20px; /* İçerikten kenarlara 20px boşluk */
+      border-radius: 10px; /* Köşeleri 10px yuvarlat */
+      margin-top: 30px; /* Üstten 30px boşluk */
+      text-align: center; /* Metni ortala */
+    }
+
+    /* Alt bilgi çubuğu (footer) */
+    footer {
+      background-color: #222; /* Çok koyu gri arka plan */
+      color: #ccc; /* Açık gri yazı rengi */
+      text-align: center; /* Metni ortala */
+      padding: 20px; /* İçerikten kenarlara 20px boşluk */
+      margin-top: 50px; /* Üstten 50px boşluk */
+    }
+
+    /* Footer linkleri için stil */
+    footer a {
+      color: #f4c542; /* Sarı renk */
+      text-decoration: none; /* Link altındaki çizgiyi kaldırır */
+      margin: 0 10px; /* Her linkin sağında ve solunda 10px boşluk */
+    }
+
+    /* Footer linkinin üzerine gelindiğinde */
+    footer a:hover {
+      color: white; /* Beyaz renk */
+    }
+
+    /* JavaScript ile değişecek mesaj kutusu */
+    .mesaj-kutusu {
+      background-color: #4CAF50; /* Yeşil arka plan */
+      color: white; /* Beyaz yazı rengi */
+      padding: 15px; /* İçerikten kenarlara 15px boşluk */
+      border-radius: 5px; /* Köşeleri 5px yuvarlat */
+      margin-top: 20px; /* Üstten 20px boşluk */
+      display: none; /* Başlangıçta gizli */
+      text-align: center; /* Metni ortala */
+    }
+
+    
+  </style>
+</head>
+<body>
+  <!-- Üst Menü Bölümü -->
+  <nav>
+    <a href="#ilanlar">İlanlar</a>
+    <a href="#performans">Performans</a>
+    <a href="#iletisim">İletişim</a>
+    <a href="HesapOlustur.html">Hesap</a>
+  </nav>
+
+  <!-- Ana Başlık -->
+  <h1>Onur Oto Galeri</h1>
+  <p style="text-align: center; color: #888;">Premium araçlar, güvenilir hizmet</p>
+
+  <!-- JavaScript ile mesaj kutusu -->
+  <div class="mesaj-kutusu" id="mesajKutusu">
+    Hoş geldiniz! Sitemizi ziyaret ettiğiniz için teşekkürler.
+  </div>
+
+  <!-- İlanlar Bölümü -->
+  <section id="ilanlar">
+    <h2>Vitrindeki Araçlar</h2>
+    <p>Ekspertiz raporlu, garantili ikinci el araçlar</p>
+
+    <div class="arac-listesi">
+      <!-- Araç 1 -->
+      <div class="arac-karti" onclick="aracSecildi('Renault Clio')">
+        <img src="clio.jpg" alt="Renault Clio">
+        <h3>Renault Clio Icon 1.0 TCe</h3>
+        <p>2022 · 18.500 km · Benzin</p>
+        <div class="fiyat">₺ 1.050.000</div>
+        <button onclick="fiyatSorgula('Renault Clio', 1050000)">Fiyat Sorgula</button>
+      </div>
+
+      <!-- Araç 2 -->
+      <div class="arac-karti" onclick="aracSecildi('Ford Fiesta')">
+        <img src="fordfiesta.jpeg" alt="Ford Fiesta">
+        <h3>Ford Fiesta Titanium 1.0 EcoBoost</h3>
+        <p>2021 · 24.000 km · Benzin</p>
+        <div class="fiyat">₺ 1.180.000</div>
+        <button onclick="fiyatSorgula('Ford Fiesta', 1180000)">Fiyat Sorgula</button>
+      </div>
+
+      <!-- Araç 3 -->
+      <div class="arac-karti" onclick="aracSecildi('Premium SUV')">
+        <img src="rangerover.jpg" alt="Premium SUV">
+        <h3>Premium SUV Özel Seri</h3>
+        <p>2020 · 32.000 km · Dizel</p>
+        <div class="fiyat">₺ 2.450.000</div>
+        <button onclick="fiyatSorgula('Premium SUV', 2450000)">Fiyat Sorgula</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Performans Bölümü -->
+  <section id="performans">
+    <h2>Güveni Sayılarla Açıklıyoruz</h2>
+    <p>Her araç için detaylı ekspertiz ve sigorta geçmişi</p>
+
+    <div class="istatistikler">
+      <div class="istatistik">
+        <strong id="aracSayisi">300+</strong>
+        <span>Teslim edilen araç</span>
+      </div>
+      <div class="istatistik">
+        <strong>4.9/5</strong>
+        <span>Müşteri memnuniyeti</span>
+      </div>
+      <div class="istatistik">
+        <strong>7/24</strong>
+        <span>Yol yardım desteği</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- İletişim Bölümü -->
+  <section id="iletisim">
+    <h2>Bize Ulaşın</h2>
+    <p>Ekspertiz randevusu alın veya sorularınızı iletin</p>
+
+    <div class="iletisim-formu">
+      <form onsubmit="formGonderildi(event)">
+        <label for="ad">Adınız Soyadınız:</label>
+        <input type="text" id="ad" name="ad" placeholder="Ad Soyad" required>
+
+        <label for="mail">E-posta Adresiniz:</label>
+        <input type="email" id="mail" name="email" placeholder="ornek@mail.com" required>
+
+        <label for="telefon">Telefon Numaranız:</label>
+        <input type="tel" id="telefon" name="telefon" placeholder="05XX XXX XX XX" required>
+
+        <label for="aciklama">Mesajınız:</label>
+        <textarea id="aciklama" name="aciklama" placeholder="Sorularınızı veya talebinizi yazın..." required></textarea>
+
+        <label>Yakıt Tercihiniz:</label>
+        <div class="yakit-secenekleri">
+          <span class="yakit-pill" onclick="yakitSecildi('Benzin')">Benzin</span>
+          <span class="yakit-pill" onclick="yakitSecildi('Dizel')">Dizel</span>
+          <span class="yakit-pill" onclick="yakitSecildi('Elektrik')">Elektrik</span>
+          <span class="yakit-pill" onclick="yakitSecildi('Hibrit')">Hibrit</span>
+        </div>
+
+        <label for="il">Şehir:</label>
+        <select id="il" name="il" required>
+          <option value="">İl seçiniz</option>
+          <option value="Ankara">Ankara</option>
+          <option value="İzmir">İzmir</option>
+          <option value="İstanbul">İstanbul</option>
+        </select>
+
+        <button type="submit">Gönder</button>
+      </form>
+    </div>
+
+    <div class="iletisim-bilgisi">
+      <h3>Showroom Bilgileri</h3>
+      <p><strong>Adres:</strong> Maltepe, Ankara</p>
+      <p><strong>Çalışma Saatleri:</strong> Salı-Pazar · 09.00 - 22.00</p>
+      <p><strong>Telefon:</strong> +90 (312) 444 0 444</p>
+      <p><strong>E-posta:</strong> info@onurotogaleri.com</p>
+    </div>
+  </section>
+
+  <!-- Alt Bilgi Çubuğu -->
+  <footer>
+    <p>© 2025 Onur Oto Galeri · Tüm hakları saklıdır.</p>
+    <p>
+      <a href="https://www.sahibinden.com/" target="_blank">Sahibinden</a> |
+      <a href="https://www.sahibinden.com/" target="_blank">İlanlar</a>
+    </p>
+  </footer>
+
+  <!-- JavaScript Kodları -->
+  <script>
+    
+      // Mesaj kutusunu 2 saniye sonra göster
+      setTimeout(function() {
+        document.getElementById("mesajKutusu").style.display = "block"; // Mesaj kutusunu göster
+      }, 2000); // 2000 milisaniye = 2 saniye
+      
+      // Mesaj kutusunu 5 saniye sonra gizle
+      setTimeout(function() {
+        document.getElementById("mesajKutusu").style.display = "none"; // Mesaj kutusunu gizle
+      }, 5000); // 5000 milisaniye = 5 saniye
+    
+
+    // Araç seçildiğinde çalışacak fonksiyon
+    function aracSecildi(aracAdi) {
+      alert("Seçtiğiniz araç: " + aracAdi + "\nDetaylı bilgi için lütfen iletişime geçin."); // Kullanıcıya mesaj göster
+      console.log("Seçilen araç: " + aracAdi); // Konsola yazdır (geliştiriciler için)
+    }
+
+    // Fiyat sorgulama fonksiyonu
+    function fiyatSorgula(aracAdi, fiyat) {
+      // Kullanıcıdan onay iste
+      var onay = confirm(aracAdi + " için fiyat: ₺" + fiyat.toLocaleString('tr-TR') + "\n\nDetaylı bilgi almak ister misiniz?");
+      
+      if (onay) {
+        // Kullanıcı onayladıysa iletişim bölümüne kaydır
+        document.getElementById("iletisim").scrollIntoView({ behavior: 'smooth' }); // Yumuşak kaydırma
+        // İletişim formundaki açıklama alanına mesaj yaz
+        document.getElementById("aciklama").value = aracAdi + " hakkında bilgi almak istiyorum.";
+      }
+    }
+
+    // Yakıt seçildiğinde çalışacak fonksiyon
+    function yakitSecildi(yakitTipi) {
+      // Tüm yakıt pill'lerini normal haline getir
+      var pilller = document.querySelectorAll(".yakit-pill"); // Tüm yakıt pill'lerini seç
+      for (var i = 0; i < pilller.length; i++) {
+        pilller[i].style.backgroundColor = "#f0f0f0"; // Arka planı açık gri yap
+        pilller[i].style.color = "#333"; // Yazı rengini koyu gri yap
+      }
+      
+      // Seçilen yakıt pill'ini vurgula
+      event.target.style.backgroundColor = "#f4c542"; // Arka planı sarı yap
+      event.target.style.color = "white"; // Yazı rengini beyaz yap
+      
+      console.log("Seçilen yakıt tipi: " + yakitTipi); // Konsola yazdır
+    }
+
+    // Form gönderildiğinde çalışacak fonksiyon
+    function formGonderildi(event) {
+      event.preventDefault(); // Formun normal gönderilmesini engelle
+      
+      // Form verilerini al
+      var ad = document.getElementById("ad").value; // Ad alanındaki değeri al
+      var email = document.getElementById("mail").value; // E-posta alanındaki değeri al
+      var telefon = document.getElementById("telefon").value; // Telefon alanındaki değeri al
+      var aciklama = document.getElementById("aciklama").value; // Açıklama alanındaki değeri al
+      var il = document.getElementById("il").value; // Şehir seçimindeki değeri al
+      
+      // Kullanıcıya başarı mesajı göster
+      alert("Teşekkürler " + ad + "!\n\nMesajınız başarıyla gönderildi.\nEn kısa sürede size dönüş yapacağız.");
+      
+      // Formu temizle
+      document.getElementById("ad").value = ""; // Ad alanını temizle
+      document.getElementById("mail").value = ""; // E-posta alanını temizle
+      document.getElementById("telefon").value = ""; // Telefon alanını temizle
+      document.getElementById("aciklama").value = ""; // Açıklama alanını temizle
+      document.getElementById("il").value = ""; // Şehir seçimini temizle
+      
+      // Yakıt pill'lerini sıfırla
+      var pilller = document.querySelectorAll(".yakit-pill");
+      for (var i = 0; i < pilller.length; i++) {
+        pilller[i].style.backgroundColor = "#f0f0f0";
+        pilller[i].style.color = "#333";
+      }
+      
+      console.log("Form gönderildi:", { ad: ad, email: email, telefon: telefon, il: il }); // Konsola yazdır
+    }
+
+    // Sayfa kaydırıldığında çalışacak fonksiyon
+    window.onscroll = function() {
+      // Sayfa en üstte değilse konsola yazdır (isteğe bağlı)
+      if (window.pageYOffset > 100) {
+        // Kullanıcı 100px aşağı kaydırdıysa bir şeyler yapabilirsiniz
+        // Örneğin: "Yukarı çık" butonu gösterebilirsiniz
+      }
+    };
+  </script>
+</body>
+</html>
+

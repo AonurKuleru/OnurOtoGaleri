@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Onur Oto Galeri</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav>
+    <a href="#ilanlar">İlanlar</a>
+    <a href="#performans">Performans</a>
+    <a href="#iletisim">İletişim</a>
+    <a href="HesapOlustur.html">Hesap</a>
+  </nav>
+
+  <h1>Onur Oto Galeri</h1>
+  <p style="text-align: center; color: #888;">Premium araçlar, güvenilir hizmet</p>
+
+  <div class="mesaj-kutusu" id="mesajKutusu">
+    Hoş geldiniz! Sitemizi ziyaret ettiğiniz için teşekkürler.
+  </div>
+
+  <section id="ilanlar">
+    <h2>Vitrindeki Araçlar</h2>
+    <p>Ekspertiz raporlu, garantili ikinci el araçlar</p>
+
+    <div class="arac-listesi">
+      <div class="arac-karti" onclick="aracSecildi('Renault Clio')">
+        <img src="clio.jpg" alt="Renault Clio">
+        <h3>Renault Clio Icon 1.0 TCe</h3>
+        <p>2022 · 18.500 km · Benzin</p>
+        <div class="fiyat">₺ 1.050.000</div>
+        <div class="butonlar" style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;">
+          <button onclick="fiyatSorgula('Renault Clio', 1050000)">Fiyat Sorgula</button>
+          <a class="buton ikincil" style="text-decoration:none;padding:10px 14px;border-radius:6px;background:#efefef;color:#333;font-weight:600;" href="renault-clio.html">Detaya Git</a>
+        </div>
+      </div>
+
+      <div class="arac-karti" onclick="aracSecildi('Ford Fiesta')">
+        <img src="fordfiesta.jpeg" alt="Ford Fiesta">
+        <h3>Ford Fiesta Titanium 1.0 EcoBoost</h3>
+        <p>2021 · 24.000 km · Benzin</p>
+        <div class="fiyat">₺ 1.180.000</div>
+        <div class="butonlar" style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;">
+          <button onclick="fiyatSorgula('Ford Fiesta', 1180000)">Fiyat Sorgula</button>
+          <a class="buton ikincil" style="text-decoration:none;padding:10px 14px;border-radius:6px;background:#efefef;color:#333;font-weight:600;" href="ford-fiesta.html">Detaya Git</a>
+        </div>
+      </div>
+
+      <div class="arac-karti" onclick="aracSecildi('Premium SUV')">
+        <img src="rangerover.jpg" alt="Premium SUV">
+        <h3>Premium SUV Özel Seri</h3>
+        <p>2020 · 32.000 km · Dizel</p>
+        <div class="fiyat">₺ 2.450.000</div>
+        <div class="butonlar" style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;">
+          <button onclick="fiyatSorgula('Premium SUV', 2450000)">Fiyat Sorgula</button>
+          <a class="buton ikincil" style="text-decoration:none;padding:10px 14px;border-radius:6px;background:#efefef;color:#333;font-weight:600;" href="premium-suv.html">Detaya Git</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="performans">
+    <h2>Güveni Sayılarla Açıklıyoruz</h2>
+    <p>Her araç için detaylı ekspertiz ve sigorta geçmişi</p>
+
+    <div class="istatistikler">
+      <div class="istatistik">
+        <strong id="aracSayisi">300+</strong>
+        <span>Teslim edilen araç</span>
+      </div>
+      <div class="istatistik">
+        <strong>4.9/5</strong>
+        <span>Müşteri memnuniyeti</span>
+      </div>
+      <div class="istatistik">
+        <strong>7/24</strong>
+        <span>Yol yardım desteği</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="iletisim">
+    <h2>Bize Ulaşın</h2>
+    <p>Ekspertiz randevusu alın veya sorularınızı iletin</p>
+
+    <div class="iletisim-formu">
+      <form onsubmit="formGonderildi(event)">
+        <label for="ad">Adınız Soyadınız:</label>
+        <input type="text" id="ad" name="ad" placeholder="Ad Soyad" required>
+
+        <label for="mail">E-posta Adresiniz:</label>
+        <input type="email" id="mail" name="email" placeholder="ornek@mail.com" required>
+
+        <label for="telefon">Telefon Numaranız:</label>
+        <input type="tel" id="telefon" name="telefon" placeholder="05XX XXX XX XX" required>
+
+        <label for="aciklama">Mesajınız:</label>
+        <textarea id="aciklama" name="aciklama" placeholder="Sorularınızı veya talebinizi yazın..." required></textarea>
+
+        <label>Yakıt Tercihiniz:</label>
+        <div class="yakit-secenekleri">
+          <span class="yakit-pill" onclick="yakitSecildi('Benzin')">Benzin</span>
+          <span class="yakit-pill" onclick="yakitSecildi('Dizel')">Dizel</span>
+          <span class="yakit-pill" onclick="yakitSecildi('Elektrik')">Elektrik</span>
+          <span class="yakit-pill" onclick="yakitSecildi('Hibrit')">Hibrit</span>
+        </div>
+
+        <label for="il">Şehir:</label>
+        <select id="il" name="il" required>
+          <option value="">İl seçiniz</option>
+          <option value="Ankara">Ankara</option>
+          <option value="İzmir">İzmir</option>
+          <option value="İstanbul">İstanbul</option>
+        </select>
+
+        <button type="submit">Gönder</button>
+      </form>
+    </div>
+
+    <div class="iletisim-bilgisi">
+      <h3>Showroom Bilgileri</h3>
+      <p><strong>Adres:</strong> Maltepe, Ankara</p>
+      <p><strong>Çalışma Saatleri:</strong> Salı-Pazar · 09.00 - 22.00</p>
+      <p><strong>Telefon:</strong> +90 (312) 444 0 444</p>
+      <p><strong>E-posta:</strong> info@onurotogaleri.com</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Onur Oto Galeri · Tüm hakları saklıdır.</p>
+    <p>
+      <a href="https://www.sahibinden.com/" target="_blank">Sahibinden</a> |
+      <a href="https://www.sahibinden.com/" target="_blank">İlanlar</a>
+    </p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,210 @@
+body {
+  background-color: #f0f0f0;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+
+nav {
+  background-color: #f4c542;
+  padding: 15px;
+  text-align: center;
+  border-bottom: 3px solid #d4a017;
+}
+
+nav a {
+  color: #222;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+nav a:hover {
+  color: white;
+}
+
+
+h1 {
+  color: #333;
+  text-align: center;
+  margin-top: 30px;
+  font-size: 32px;
+}
+
+h2 {
+  color: #555;
+  margin-top: 40px;
+  font-size: 24px;
+}
+
+p {
+  color: #666;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+
+.arac-listesi {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.arac-karti {
+  background-color: white;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  width: 280px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.arac-karti:hover {
+  border-color: #f4c542;
+  transform: scale(1.05);
+}
+
+.arac-karti img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.fiyat {
+  color: #f4c542;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+
+.istatistikler {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.istatistik {
+  background-color: #e8e8e8;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  min-width: 150px;
+  margin: 10px;
+}
+
+.istatistik strong {
+  display: block;
+  font-size: 28px;
+  color: #f4c542;
+}
+
+
+.iletisim-formu {
+  background-color: white;
+  padding: 25px;
+  border-radius: 10px;
+  max-width: 500px;
+  margin: 30px auto;
+  border: 2px solid #ddd;
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+button {
+  background-color: #f4c542;
+  padding: 12px;
+  font-weight: bold;
+  border: none;
+  margin-top: 15px;
+  width: 100%;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #d4a017;
+}
+
+
+.yakit-secenekleri {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.yakit-pill {
+  background-color: #eee;
+  padding: 8px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.yakit-pill:hover {
+  background-color: #f4c542;
+  color: white;
+}
+
+.iletisim-bilgisi {
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 30px;
+  text-align: center;
+}
+
+
+footer {
+  background-color: #222;
+  color: #ccc;
+  text-align: center;
+  padding: 20px;
+  margin-top: 50px;
+}
+
+footer a {
+  color: #f4c542;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: white;
+}
+
+
+.mesaj-kutusu {
+  background-color: #4CAF50;
+  color: white;
+  padding: 15px;
+  border-radius: 5px;
+  margin: 20px auto;
+  max-width: 600px;
+  text-align: center;
+}
+
+
+
+
+
+
+
+
